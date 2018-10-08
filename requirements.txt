@@ -1,0 +1,6 @@
+# common
+gunicorn ~= 19.9
+
+# fw_falcon
+falcon   ~= 1.4
+requests ~= 2.19
