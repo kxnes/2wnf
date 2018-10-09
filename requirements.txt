@@ -15,3 +15,6 @@ quart     ~= 0.6
 
 # fw_starlette
 starlette ~= 0.3
+
+# fw_sanic
+sanic     ~= 0.8
