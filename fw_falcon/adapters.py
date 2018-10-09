@@ -8,11 +8,14 @@ class SinkAdapter(object):
         'yandex': 'https://www.yandex.ru/'
     }
 
-    def __call__(self, req, resp, engine):
+    def __call__(self, request, response, engine):
+        print('request:', request)
+        print('response:', response)
+        print('engine:', engine)
         url = self.engines[engine]
-        params = {'q': req.get_param('q', True)}
+        params = {'q': request.get_param('q', True)}
         result = requests.get(url, params=params)
 
-        resp.status = str(result.status_code) + ' ' + result.reason
-        resp.content_type = result.headers['content-type']
-        resp.body = result.text
+        response.status = f'{result.status_code} {result.reason}'
+        response.content_type = result.headers['content-type']
+        response.body = result.text
