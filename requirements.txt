@@ -1,7 +1,10 @@
 # common
 gunicorn ~= 19.9
 httpie   ~= 0.9
+requests ~= 2.19
 
 # fw_falcon
 falcon   ~= 1.4
-requests ~= 2.19
+
+# fw_weppy
+weppy    ~= 1.2
