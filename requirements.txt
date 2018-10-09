@@ -8,3 +8,6 @@ falcon   ~= 1.4
 
 # fw_weppy
 weppy    ~= 1.2
+
+# fw_quart
+quart    ~= 0.6
