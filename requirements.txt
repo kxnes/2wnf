@@ -1,8 +1,6 @@
 # common
-gunicorn  ~= 19.9
-httpie    ~= 0.9
-requests  ~= 2.19
 uvicorn   ~= 0.3
+werkzeug  ~= 0.14
 
 # fw_falcon
 falcon    ~= 1.4
