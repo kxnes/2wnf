@@ -8,6 +8,7 @@ import uvicorn
 from uvicorn.reloaders.statreload import StatReload
 from werkzeug.serving import run_simple
 
+
 PROJECT_ROOT = pathlib.Path(__file__).parent
 
 SRC_ROOT = PROJECT_ROOT / 'src'
@@ -38,8 +39,11 @@ FRAMEWORKS = {
     'molten':
         lambda app: run_simple(HOST, PORT, app, use_debugger=DEBUG, use_reloader=RELOADER),
     'flask':
-        lambda app: app.run(HOST, PORT, debug=DEBUG, load_dotenv=False, use_reloader=RELOADER)
+        lambda app: app.run(HOST, PORT, debug=DEBUG, use_reloader=RELOADER),
+    'bottle':
+        lambda app: app.run(host=HOST, port=PORT, debug=DEBUG, reloader=RELOADER)
 }
+
 
 # for `flask` development serving without warnings
 os.environ.setdefault('FLASK_ENV', 'development')

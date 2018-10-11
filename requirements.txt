@@ -22,3 +22,6 @@ molten    ~= 0.6
 
 # fw_flask
 flask     ~= 1.0
+
+# fw_bottle
+bottle    ~= 0.12
