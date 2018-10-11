@@ -16,4 +16,6 @@ if __name__ == '__main__':
     if args.framework == 'aiohttp' and args.application != 'app':
         raise AttributeError('For `aiohttp` dev server use `app` application name.')
 
-    FRAMEWORKS[args.framework](getattr(framework, args.application))
+    application = getattr(framework, args.application) if args.framework != 'cherrypy' else None
+
+    FRAMEWORKS[args.framework](application)
