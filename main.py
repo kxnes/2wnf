@@ -3,6 +3,8 @@
 import argparse
 import importlib
 
+import tornado.ioloop
+
 from config import FRAMEWORKS
 
 
@@ -16,6 +18,11 @@ if __name__ == '__main__':
     if args.framework == 'aiohttp' and args.application != 'app':
         raise AttributeError('For `aiohttp` dev server use `app` application name.')
 
+    # `cherrypy` don't want `app` instance (had internal)
     application = getattr(framework, args.application) if args.framework != 'cherrypy' else None
 
     FRAMEWORKS[args.framework](application)
+
+    # `tornado` runs only if `IOLoop` present
+    if args.framework == 'tornado':
+        tornado.ioloop.IOLoop.current().start()
