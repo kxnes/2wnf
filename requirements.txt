@@ -16,3 +16,6 @@ starlette ~= 0.3
 
 # fw_sanic
 sanic     ~= 0.8
+
+# fw_molten
+molten    ~= 0.6
