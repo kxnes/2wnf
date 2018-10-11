@@ -7,5 +7,5 @@ app = bottle.Bottle()
 
 
 @app.route('/')
-def hello():
+def ping():
     return PING_MESSAGE.format(app='bottle')

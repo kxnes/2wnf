@@ -11,4 +11,9 @@ if __name__ == '__main__':
     parser.add_argument('-f', '--framework', required=True, choices=FRAMEWORKS)
     parser.add_argument('-a', '--application', default='app')
     args = parser.parse_args()
-    FRAMEWORKS[args.framework](getattr(importlib.import_module(f'fw_{args.framework}'), args.application))
+
+    framework = importlib.import_module(f'fw_{args.framework}')
+    if args.framework == 'aiohttp' and args.application != 'app':
+        raise AttributeError('For `aiohttp` dev server use `app` application name.')
+
+    FRAMEWORKS[args.framework](getattr(framework, args.application))
