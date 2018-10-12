@@ -65,6 +65,8 @@ FRAMEWORKS = {
         ) if RELOAD else uvicorn.run(app, HOST, PORT, debug=DEBUG),
     'tornado':
         lambda app: HTTPServer(app).listen(PORT, HOST),
+    'turbogears':
+        lambda app: run_simple(HOST, PORT, app, use_debugger=DEBUG, use_reloader=RELOAD),
     'weppy':
         lambda app: app.run(HOST, PORT, debug=DEBUG, reloader=RELOAD)
 }

@@ -39,5 +39,8 @@ starlette        ~= 0.3
 # fw_tornado
 tornado          ~= 5.1
 
+# fw_turbogears
+turbogears2      ~= 2.3
+
 # fw_weppy
 weppy            ~= 1.2
