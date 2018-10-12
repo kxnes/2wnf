@@ -19,7 +19,7 @@ if __name__ == '__main__':
         raise AttributeError('For `aiohttp` dev server use `app` application name.')
 
     # `cherrypy` don't want `app` instance (had internal)
-    application = getattr(framework, args.application) if args.framework != 'cherrypy' else None
+    application = getattr(framework, args.application) if args.framework not in ('cherrypy', 'django') else None
 
     FRAMEWORKS[args.framework](application)
 

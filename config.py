@@ -5,9 +5,10 @@ import pathlib
 import uvicorn
 import cherrypy
 
-from aiohttp_devtools.cli import runserver
+from aiohttp_devtools.cli import runserver as aioserver
 # noinspection PyProtectedMember
 from cherrypy import server
+from django.core.management.commands import runserver as djserver
 from tornado.httpserver import HTTPServer
 from uvicorn.reloaders.statreload import StatReload
 from werkzeug.serving import run_simple
@@ -31,7 +32,7 @@ PING_MESSAGE = '{app} is ready!'
 
 FRAMEWORKS = {
     'aiohttp':
-        lambda app: runserver([
+        lambda app: aioserver([
             f'{AIOHTTP_DEV_CLIENT}',
             '--host', HOST,
             '--port', PORT,
@@ -42,6 +43,10 @@ FRAMEWORKS = {
         lambda app: app.run(host=HOST, port=PORT, debug=DEBUG, reloader=RELOAD),
     'cherrypy':
         lambda app: cherrypy.server.start(),
+    'django':
+        lambda app: djserver.Command().handle(
+            addrport=f'{HOST}:{PORT}', use_reloader=RELOAD, use_threading=True, use_ipv6=False
+        ),
     'falcon':
         lambda app: run_simple(HOST, PORT, app, use_debugger=DEBUG, use_reloader=RELOAD),
     'flask':

@@ -12,6 +12,9 @@ bottle           ~= 0.12
 # fw_cherrypy
 cherrypy         ~= 18.0
 
+# fw_django
+django           ~= 2.1
+
 # fw_falcon
 falcon           ~= 1.4
 
