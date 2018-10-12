@@ -19,7 +19,7 @@ if __name__ == '__main__':
     if args.framework == 'aiohttp' and args.application != 'app':
         raise AttributeError('For `aiohttp` dev server use `app` application name.')
 
-    # `cherrypy` don't want `app` instance (had internal)
+    # `cherrypy`, `django` don't want `app` instance (has internal)
     application = getattr(framework, args.application) if args.framework not in ('cherrypy', 'django') else None
 
     FRAMEWORKS[args.framework](application)
@@ -29,5 +29,6 @@ if __name__ == '__main__':
         tornado.ioloop.IOLoop.current().start()
 
     # `twisted` runs from internal reactor
-    # noinspection PyUnresolvedReferences
-    twisted.internet.reactor.run()  # some BLACK MAGIC here
+    if args.framework == 'twisted':
+        # noinspection PyUnresolvedReferences
+        twisted.internet.reactor.run()  # some BLACK MAGIC here

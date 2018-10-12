@@ -72,11 +72,11 @@ FRAMEWORKS = {
         lambda app: endpoints.serverFromString(reactor, f'tcp:{PORT}:interface={HOST}').listen(app),
     'weppy':
         lambda app: app.run(HOST, PORT, debug=DEBUG, reloader=RELOAD),
+    'werkzeug':
+        lambda app: run_simple(HOST, PORT, app, use_debugger=DEBUG, use_reloader=RELOAD),
     'wheezyweb':
         lambda app: run_simple(HOST, PORT, app, use_debugger=DEBUG, use_reloader=RELOAD)
 }
-
-# serverFromString(reactor, "")
 
 
 # == WORKAROUND == #
