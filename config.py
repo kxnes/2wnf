@@ -10,6 +10,7 @@ from aiohttp_devtools.cli import runserver as aioserver
 from cherrypy import server
 from django.core.management.commands import runserver as djserver
 from tornado.httpserver import HTTPServer
+from twisted.internet import reactor, endpoints
 from uvicorn.reloaders.statreload import StatReload
 from werkzeug.serving import run_simple
 
@@ -67,11 +68,15 @@ FRAMEWORKS = {
         lambda app: HTTPServer(app).listen(PORT, HOST),
     'turbogears':
         lambda app: run_simple(HOST, PORT, app, use_debugger=DEBUG, use_reloader=RELOAD),
+    'twisted':
+        lambda app: endpoints.serverFromString(reactor, f'tcp:{PORT}:interface={HOST}').listen(app),
     'weppy':
         lambda app: app.run(HOST, PORT, debug=DEBUG, reloader=RELOAD),
     'wheezyweb':
         lambda app: run_simple(HOST, PORT, app, use_debugger=DEBUG, use_reloader=RELOAD)
 }
+
+# serverFromString(reactor, "")
 
 
 # == WORKAROUND == #

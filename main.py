@@ -4,6 +4,7 @@ import argparse
 import importlib
 
 import tornado.ioloop
+import twisted.internet.reactor
 
 from config import FRAMEWORKS
 
@@ -26,3 +27,7 @@ if __name__ == '__main__':
     # `tornado` runs only if `IOLoop` present
     if args.framework == 'tornado':
         tornado.ioloop.IOLoop.current().start()
+
+    # `twisted` runs from internal reactor
+    # noinspection PyUnresolvedReferences
+    twisted.internet.reactor.run()  # some BLACK MAGIC here
