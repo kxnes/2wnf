@@ -1,57 +1,21 @@
-# fw_aiohttp
 aiohttp          ~= 3.4
 aiohttp-devtools ~= 0.10
-
-# fw_bottle
 bottle           ~= 0.12
-
-# fw_cherrypy
 cherrypy         ~= 18.0
-
-# fw_django
 django           ~= 2.1
-
-# fw_falcon
 falcon           ~= 1.4
-
-# fw_flask
 flask            ~= 1.0
-
-# fw_molten
+hypercorn        ~= 0.3
 molten           ~= 0.6
-
-# fw_pyramid
 pyramid          ~= 1.9
-
-# fw_quart
 quart            ~= 0.6
-
-# fw_sanic
 sanic            ~= 0.8
-
-# fw_starlette
 starlette        ~= 0.3
-
-# fw_tornado
 tornado          ~= 5.1
-
-# fw_turbogears
 turbogears2      ~= 2.3
-
-# fw_twisted
 twisted          ~= 18.7
-
-# fw_uvicorn
 uvicorn          ~= 0.3
-
-# fw_vibora
 vibora           ~= 0.0
-
-# fw_weppy
 weppy            ~= 1.2
-
-# fw_werkzeug
 werkzeug         ~= 0.14
-
-# fw_wheezyweb
 wheezy.web       ~= 0.1

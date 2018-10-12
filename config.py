@@ -13,7 +13,7 @@ from tornado.httpserver import HTTPServer
 from twisted.internet import reactor, endpoints
 from uvicorn.reloaders.statreload import StatReload
 from werkzeug.serving import run_simple
-
+from hypercorn import run, Config
 
 # == Settings == #
 
@@ -52,6 +52,10 @@ FRAMEWORKS = {
         lambda app: run_simple(HOST, PORT, app, use_debugger=DEBUG, use_reloader=RELOAD),
     'flask':
         lambda app: app.run(HOST, PORT, debug=DEBUG, use_reloader=RELOAD),
+    'hypercorn':
+        lambda app: run.run_single(app, Config.from_mapping(
+            {'host': HOST, 'port': PORT, 'debug': DEBUG, 'use_reloader': RELOAD}
+        ), loop=asyncio.get_event_loop()),
     'molten':
         lambda app: run_simple(HOST, PORT, app, use_debugger=DEBUG, use_reloader=RELOAD),
     'pyramid':
