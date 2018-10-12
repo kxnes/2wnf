@@ -68,7 +68,9 @@ FRAMEWORKS = {
     'turbogears':
         lambda app: run_simple(HOST, PORT, app, use_debugger=DEBUG, use_reloader=RELOAD),
     'weppy':
-        lambda app: app.run(HOST, PORT, debug=DEBUG, reloader=RELOAD)
+        lambda app: app.run(HOST, PORT, debug=DEBUG, reloader=RELOAD),
+    'wheezyweb':
+        lambda app: run_simple(HOST, PORT, app, use_debugger=DEBUG, use_reloader=RELOAD)
 }
 
 

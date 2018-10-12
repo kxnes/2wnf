@@ -44,3 +44,6 @@ turbogears2      ~= 2.3
 
 # fw_weppy
 weppy            ~= 1.2
+
+# fw_wheezyweb
+wheezy.web       ~= 0.1
