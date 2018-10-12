@@ -70,6 +70,10 @@ FRAMEWORKS = {
         lambda app: run_simple(HOST, PORT, app, use_debugger=DEBUG, use_reloader=RELOAD),
     'twisted':
         lambda app: endpoints.serverFromString(reactor, f'tcp:{PORT}:interface={HOST}').listen(app),
+    'uvicorn':
+        lambda app: StatReload(logging.getLogger(__name__)).run(
+            uvicorn.run, {'app': app, 'host': HOST, 'port': PORT, 'debug': DEBUG}
+        ) if RELOAD else uvicorn.run(app, HOST, PORT, debug=DEBUG),
     'weppy':
         lambda app: app.run(HOST, PORT, debug=DEBUG, reloader=RELOAD),
     'werkzeug':
