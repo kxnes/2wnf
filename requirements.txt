@@ -44,6 +44,9 @@ twisted          ~= 18.7
 # fw_uvicorn
 uvicorn          ~= 0.3
 
+# fw_vibora
+vibora           ~= 0.0
+
 # fw_weppy
 weppy            ~= 1.2
 

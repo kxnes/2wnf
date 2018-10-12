@@ -15,7 +15,7 @@ class App:
         })
         await send({
             'type': 'http.response.body',
-            'body': PING_MESSAGE.format(app='uvicorn').encode('utf-8')
+            'body': PING_MESSAGE.format(app='uvicorn').encode()
         })
 
 

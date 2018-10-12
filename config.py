@@ -74,6 +74,8 @@ FRAMEWORKS = {
         lambda app: StatReload(logging.getLogger(__name__)).run(
             uvicorn.run, {'app': app, 'host': HOST, 'port': PORT, 'debug': DEBUG}
         ) if RELOAD else uvicorn.run(app, HOST, PORT, debug=DEBUG),
+    'vibora':
+        lambda app: app.run(HOST, PORT, debug=DEBUG),
     'weppy':
         lambda app: app.run(HOST, PORT, debug=DEBUG, reloader=RELOAD),
     'werkzeug':

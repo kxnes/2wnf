@@ -9,7 +9,7 @@ class Ping(resource.Resource):
     # noinspection PyPep8Naming,PyMethodMayBeStatic
     def render_GET(self, request):
         request.setHeader(b'content-type', b'text/plain')
-        return PING_MESSAGE.format(app='twisted').encode('utf-8')
+        return PING_MESSAGE.format(app='twisted').encode()
 
 
 app = server.Site(Ping())
