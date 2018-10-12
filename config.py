@@ -1,5 +1,4 @@
 import os
-import sys
 import asyncio
 import logging
 import pathlib
@@ -18,7 +17,7 @@ from werkzeug.serving import run_simple
 
 PROJECT_ROOT = pathlib.Path(__file__).parent
 
-SRC_ROOT = PROJECT_ROOT / 'src'
+FRAMEWORKS_ROOT = PROJECT_ROOT / 'frameworks'
 
 HOST = '127.0.0.1'
 
@@ -49,6 +48,8 @@ FRAMEWORKS = {
         lambda app: app.run(HOST, PORT, debug=DEBUG, use_reloader=RELOAD),
     'molten':
         lambda app: run_simple(HOST, PORT, app, use_debugger=DEBUG, use_reloader=RELOAD),
+    'pyramid':
+        lambda app: run_simple(HOST, PORT, app, use_debugger=DEBUG, use_reloader=RELOAD),
     'quart':
         lambda app: app.run(HOST, PORT, debug=DEBUG, use_reloader=RELOAD, loop=asyncio.get_event_loop()),
     'sanic':
@@ -69,8 +70,6 @@ FRAMEWORKS = {
 # for `flask` development serving without warnings
 os.environ.setdefault('FLASK_ENV', 'development')
 # for `aiohttp` run server client
-AIOHTTP_DEV_CLIENT = (SRC_ROOT / 'fw_aiohttp' / '__init__.py').as_posix()
+AIOHTTP_DEV_CLIENT = (FRAMEWORKS_ROOT / 'fw_aiohttp' / '__init__.py').as_posix()
 # for `cherrypy` serving on properly address
 server.bind_addr = (HOST, PORT)
-# for resolve fw_{__name__} without `src` by name
-sys.path.append(SRC_ROOT.as_posix())

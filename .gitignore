@@ -1,4 +1,4 @@
 # weppy artifacts
-src/fw_weppy/languages/
-src/fw_weppy/static/
-src/fw_weppy/logs/
+frameworks/fw_weppy/languages/
+frameworks/fw_weppy/static/
+frameworks/fw_weppy/logs/
