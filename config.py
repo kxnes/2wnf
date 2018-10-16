@@ -9,6 +9,7 @@ from aiohttp_devtools.cli import runserver as aioserver
 # noinspection PyProtectedMember
 from cherrypy import server
 from django.core.management.commands import runserver as djserver
+from pulsar.apps.wsgi import WSGIServer
 from tornado.httpserver import HTTPServer
 from twisted.internet import reactor, endpoints
 from uvicorn.reloaders.statreload import StatReload
@@ -30,6 +31,7 @@ DEBUG = True
 RELOAD = True
 
 PING_MESSAGE = '{app} is ready!'
+
 
 FRAMEWORKS = {
     'aiohttp':
@@ -58,6 +60,8 @@ FRAMEWORKS = {
         ), loop=asyncio.get_event_loop()),
     'molten':
         lambda app: run_simple(HOST, PORT, app, use_debugger=DEBUG, use_reloader=RELOAD),
+    'kekos':
+        lambda app: None,
     'pyramid':
         lambda app: run_simple(HOST, PORT, app, use_debugger=DEBUG, use_reloader=RELOAD),
     'quart':

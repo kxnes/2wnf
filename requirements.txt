@@ -7,6 +7,7 @@ falcon           ~= 1.4
 flask            ~= 1.0
 hypercorn        ~= 0.3
 molten           ~= 0.6
+pulsar           ~= 2.0
 pyramid          ~= 1.9
 quart            ~= 0.6
 sanic            ~= 0.8
