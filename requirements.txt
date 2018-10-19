@@ -10,6 +10,7 @@ molten           ~= 0.6
 pulsar           ~= 2.0
 pyramid          ~= 1.9
 quart            ~= 0.6
+responder        ~= 0.1
 sanic            ~= 0.8
 starlette        ~= 0.3
 tornado          ~= 5.1

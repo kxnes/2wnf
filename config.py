@@ -65,6 +65,8 @@ FRAMEWORKS = {
         lambda app: run_simple(HOST, PORT, app, use_debugger=DEBUG, use_reloader=RELOAD),
     'quart':
         lambda app: app.run(HOST, PORT, debug=DEBUG, use_reloader=RELOAD, loop=asyncio.get_event_loop()),
+    'responder':
+        lambda app: app.run(),
     'sanic':
         lambda app: app.run(HOST, PORT, debug=DEBUG, auto_reload=RELOAD),
     'starlette':
