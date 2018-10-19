@@ -5,16 +5,16 @@ import importlib
 
 import tornado.ioloop
 import twisted.internet.reactor
-from pulsar.apps.wsgi import WSGIServer
 
-from config import FRAMEWORKS, HOST, PORT, DEBUG, RELOAD
+from config import FRAMEWORKS
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('-f', '--framework', default='kekos', choices=FRAMEWORKS)
+    parser.add_subparsers()
+    parser.add_argument('-f', '--framework', required=True, choices=FRAMEWORKS)
     parser.add_argument('-a', '--application', default='app')
-    args = parser.parse_args()
+    args = parser.parse_args(namespace=argparse.Namespace())
 
     framework = importlib.import_module(f'frameworks.fw_{args.framework}')
     if args.framework == 'aiohttp' and args.application != 'app':
@@ -32,10 +32,4 @@ if __name__ == '__main__':
         # noinspection PyUnresolvedReferences
         twisted.internet.reactor.run()  # some BLACK MAGIC here
 
-    # `pulsar` runs throw `hardcode`
-    if args.framework == 'kekos':
-        delattr(args, 'framework')
-        print(args.framework)
-        WSGIServer(callable=application, bind=f'{HOST}:{PORT}', debug=DEBUG, reload=RELOAD).start()
-    # else:
-    #     FRAMEWORKS[args.framework](application)
+    FRAMEWORKS[args.framework](application)

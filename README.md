@@ -13,6 +13,7 @@ Learning and playground of WEB-frameworks.
 * [flask](http://flask.pocoo.org/)
 * [hypercorn](https://pgjones.gitlab.io/hypercorn/)
 * [molten](https://moltenframework.com/)
+* [pulsar](http://quantmind.github.io/pulsar/index.html)
 * [pyramid](https://docs.pylonsproject.org/projects/pyramid/en/1.9-branch/)
 * [quart](https://pgjones.gitlab.io/quart/index.html)
 * [sanic](https://sanic.readthedocs.io/en/latest/)

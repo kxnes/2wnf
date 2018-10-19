@@ -32,7 +32,6 @@ RELOAD = True
 
 PING_MESSAGE = '{app} is ready!'
 
-
 FRAMEWORKS = {
     'aiohttp':
         lambda app: aioserver([
@@ -60,8 +59,8 @@ FRAMEWORKS = {
         ), loop=asyncio.get_event_loop()),
     'molten':
         lambda app: run_simple(HOST, PORT, app, use_debugger=DEBUG, use_reloader=RELOAD),
-    'kekos':
-        lambda app: None,
+    'pulsar':
+        lambda app: WSGIServer(callable=app, load_config=False, bind=f'{HOST}:{PORT}', debug=DEBUG, reload=RELOAD).start(),
     'pyramid':
         lambda app: run_simple(HOST, PORT, app, use_debugger=DEBUG, use_reloader=RELOAD),
     'quart':
@@ -91,7 +90,7 @@ FRAMEWORKS = {
     'wheezyweb':
         lambda app: run_simple(HOST, PORT, app, use_debugger=DEBUG, use_reloader=RELOAD)
 }
-
+print(len(FRAMEWORKS))
 
 # == WORKAROUND == #
 

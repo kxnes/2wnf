@@ -1,6 +1,9 @@
 # django artifacts
 frameworks/fw_django/*.sqlite3
 
+# pulsar artifacts
+pulsar.log
+
 # weppy artifacts
 frameworks/fw_weppy/languages/
 frameworks/fw_weppy/static/
