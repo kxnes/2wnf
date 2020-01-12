@@ -19,5 +19,5 @@ twisted          ~= 19.2
 uvicorn          ~= 0.3
 vibora           ~= 0.0
 weppy            ~= 1.2
-werkzeug         ~= 0.14
+werkzeug         >= 0.15.3
 wheezy.web       ~= 0.1
